@@ -28,5 +28,15 @@ app.get("/data", async (req, res) => {
   });
   
 
+  app.put("/data/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      await db.collection("data").doc(id).update(req.body);
+      res.status(200).send({ message: "Document updated!" });
+    } catch (error) {
+      res.status(500).send({ error: error.message });
+    }
+  });
+  
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
