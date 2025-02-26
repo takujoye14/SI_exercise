@@ -1,0 +1,19 @@
+{
+  "name": "siexercise",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "NODE_ENV=development node server.js",
+    "start:release": "NODE_ENV=release node server.js",
+    "start:prod": "NODE_ENV=production node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.1.0"
+  }
+}
