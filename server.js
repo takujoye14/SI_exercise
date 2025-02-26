@@ -7,9 +7,6 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 const app = express();
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send(`Running in ${process.env.NODE_ENV} mode`);
-});
 app.post("/data", async (req, res) => {
   try {
     const { name, value } = req.body;
