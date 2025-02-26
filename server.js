@@ -17,6 +17,16 @@ app.post("/data", async (req, res) => {
   }
 });
 
+app.get("/data", async (req, res) => {
+    try {
+      const snapshot = await db.collection("data").get();
+      const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      res.status(200).send(docs);
+    } catch (error) {
+      res.status(500).send({ error: error.message });
+    }
+  });
+  
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
