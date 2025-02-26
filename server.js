@@ -38,5 +38,14 @@ app.get("/data", async (req, res) => {
     }
   });
   
+  app.delete("/data/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      await db.collection("data").doc(id).delete();
+      res.status(200).send({ message: "Document deleted!" });
+    } catch (error) {
+      res.status(500).send({ error: error.message });
+    }
+  });
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
